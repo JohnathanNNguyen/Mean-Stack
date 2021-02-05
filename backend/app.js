@@ -8,12 +8,13 @@ const mongoose = require("mongoose");
 
 //import post model don't include the extension
 const Post = require("./models/post");
+const Secrets = require("../.secret/.secret");
 
 const app = express();
 //this is where you connect mongoose/ you can get this string from mongoose.com when you connect to application in the cluster remember there will be a spot for your password in the link replace the whole <PASSWORD> including the <> this will return a promise
 mongoose
   .connect(
-    "mongodb+srv://Johnathan:h2nSav2R26EPcRt@cluster0.bdvqk.mongodb.net/node-angular?retryWrites=true&w=majority",
+    Secrets.MongoURI,
     { useNewUrlParser: true, useUnifiedTopology: true }
     //I needed to add the two options up above to get rid of errors
   )
