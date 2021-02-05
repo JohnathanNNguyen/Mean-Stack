@@ -12,9 +12,13 @@ const Secrets = require("../.secret/.secret");
 
 const app = express();
 //this is where you connect mongoose/ you can get this string from mongoose.com when you connect to application in the cluster remember there will be a spot for your password in the link replace the whole <PASSWORD> including the <> this will return a promise
+
+require("dotenv").config();
+const mongoUri = process.env.MongoURI;
+
 mongoose
   .connect(
-    Secrets.MongoURI,
+    mongoUri,
     { useNewUrlParser: true, useUnifiedTopology: true }
     //I needed to add the two options up above to get rid of errors
   )
